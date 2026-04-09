@@ -1,0 +1,393 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap");
+
+:root {
+  --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+
+  --bg-page: #4fa3c4;
+  --text-main: #eef8fb;
+  --text-strong: #ffffff;
+  --text-muted: #d2eaf1;
+  --text-dark: #163640;
+
+  --panel-bg: rgba(16, 74, 94, 0.62);
+  --panel-bg-strong: rgba(16, 74, 94, 0.74);
+  --panel-border: rgba(255, 255, 255, 0.16);
+
+  --accent: #f2b544;
+  --accent-strong: #dd9d28;
+  --accent-gradient: #f2b544;
+
+  --card-front-bg: #1f6f8b;
+  --card-front-border: rgba(255, 255, 255, 0.14);
+  --card-front-text: #f7fcfd;
+
+  --card-back-bg: #ffffff;
+  --card-back-border: rgba(22, 54, 64, 0.12);
+  --card-back-text: #163640;
+
+  --matched-bg: #f4dfb3;
+  --matched-border: rgba(22, 54, 64, 0.14);
+  --matched-text: #163640;
+
+  --shadow-panel: 0 18px 40px rgba(10, 45, 58, 0.24);
+  --shadow-card: 0 10px 24px rgba(10, 45, 58, 0.18);
+  --shadow-btn: 0 10px 20px rgba(120, 78, 10, 0.18);
+  --shadow-btn-hover: 0 14px 26px rgba(120, 78, 10, 0.24);
+  --shadow-match: 0 0 22px rgba(120, 78, 10, 0.16);
+  --shadow-card-hover: 0 14px 28px rgba(10, 45, 58, 0.22);
+
+  --radius-panel: 24px;
+  --radius-card: 18px;
+  --radius-btn: 12px;
+
+  --transition-fast: 0.2s;
+  --transition-normal: 0.3s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  background: var(--bg-page);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  color: var(--text-main);
+}
+
+#root {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.game-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 0;
+  width: 100%;
+  max-width: 780px;
+}
+
+.game-header h1 {
+  font-family: "Fredoka", var(--font-main);
+  font-size: 3.4rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--text-strong);
+  text-align: center;
+}
+
+.stats {
+  display: flex;
+  gap: 36px;
+  justify-content: center;
+  width: 100%;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.stat-label {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-strong);
+}
+
+.controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.size-select {
+  background: rgba(255, 255, 255, 0.14);
+  color: var(--text-strong);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 12px 16px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: var(--radius-btn);
+  outline: none;
+}
+
+.size-select option {
+  background: #ffffff;
+  color: #163640;
+}
+
+.reset-btn {
+  font-family: "Fredoka", var(--font-main);
+  background: var(--accent-strong);
+  color: #ffffff;
+  border: none;
+  padding: 12px 28px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+    filter var(--transition-fast);
+  box-shadow: var(--shadow-btn);
+  paint-order: stroke fill;
+  width: 240px;
+}
+
+.reset-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-btn-hover);
+  filter: brightness(1.05);
+}
+
+.reset-btn:active {
+  transform: translateY(0);
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 32, 40, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 1000;
+}
+
+.win-modal {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  color: #163640;
+  border-radius: 20px;
+  padding: 32px 24px 24px;
+  box-shadow: 0 18px 40px rgba(10, 45, 58, 0.28);
+  text-align: center;
+  border: 1px solid rgba(22, 54, 64, 0.12);
+  animation: slideDown 0.35s ease-out;
+}
+
+.win-modal h2 {
+  font-family: "Fredoka", var(--font-main);
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #163640;
+}
+
+.win-modal p {
+  font-size: 1.08rem;
+  color: #355761;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: #355761;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modal-close-btn:hover {
+  filter: brightness(0.85);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.win-message h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: var(--text-strong);
+}
+
+.win-message p {
+  font-size: 1.08rem;
+  color: var(--text-muted);
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns, 4), 1fr);
+  gap: 16px;
+  max-width: var(--grid-max-width, 620px);
+  width: 100%;
+}
+
+.card {
+  aspect-ratio: 1;
+  position: relative;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.25s ease;
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  backface-visibility: hidden;
+  transition: opacity var(--transition-normal), transform var(--transition-normal),
+    box-shadow var(--transition-normal);
+}
+
+.card-front {
+  background: var(--card-front-bg);
+  color: var(--card-front-text);
+  font-weight: 700;
+  font-size: 2.8rem;
+  z-index: 1;
+  border: 1px solid var(--card-front-border);
+}
+
+.card-back {
+  background: var(--card-back-bg);
+  color: var(--card-back-text);
+  font-size: 3.8rem;
+  z-index: 0;
+  border: 1px solid var(--card-back-border);
+}
+
+.card.flipped .card-front {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.9);
+}
+
+.card.flipped .card-back {
+  opacity: 1;
+}
+
+.card.matched {
+  pointer-events: none;
+}
+
+.card.matched .card-back {
+  background: var(--matched-bg);
+  color: var(--matched-text);
+  box-shadow: var(--shadow-match);
+  border: 1px solid var(--matched-border);
+}
+
+.card:hover:not(.matched):not(.flipped) .card-front {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.card:active:not(.matched) {
+  transform: scale(0.97);
+}
+
+@media (max-width: 768px) {
+  .game-header h1 {
+    font-size: 2.8rem;
+  }
+
+  .cards-grid {
+    gap: 12px;
+  }
+
+  .card-front,
+  .card-back {
+    font-size: 2.4rem;
+  }
+
+  .card-back {
+    font-size: 3rem;
+  }
+
+  .stats {
+    gap: 24px;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 16px;
+  }
+
+  .game-header {
+    padding: 0;
+    border-radius: 0;
+  }
+
+  .game-header h1 {
+    font-size: 2.2rem;
+  }
+
+  .stats {
+    gap: 16px;
+  }
+
+  .controls-row {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .size-select,
+  .reset-btn {
+    width: 100%;
+  }
+
+  .card-front,
+  .card-back {
+    font-size: 2rem;
+    border-radius: 14px;
+  }
+
+  .card-back {
+    font-size: 2.4rem;
+  }
+}
