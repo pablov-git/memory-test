@@ -1,16 +1,68 @@
-# React + Vite
+# 🧠 Memotest
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A memory card game built with React.
 
-Currently, two official plugins are available:
+The game challenges the player to find matching pairs of cards by memorizing their positions at the beginning of each round. It includes different board sizes, randomized image selection on every new game, a memorization phase before playing, and a responsive layout adapted for smaller screens.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🧰 Technologies Used
 
-## React Compiler
+- React
+- JavaScript
+- CSS
+- Vite
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📂 Project Structure
 
-## Expanding the ESLint configuration
+| File / Folder | Description |
+|---|---|
+| `App.jsx` | Main app component and board size control |
+| `Card.jsx` | Individual card component |
+| `GameHeader.jsx` | Header with title, controls, score and moves |
+| `WinMessage.jsx` | Win modal shown when the game is completed |
+| `useGameLogic.js` | Core game logic and state management |
+| `index.css` | Global styles and responsive layout |
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🎮 Game Features
+
+- Two board sizes: `4 x 4` and `5 x 6`
+- Random card selection on every new game
+- Initial memorization phase before the cards flip back
+- Score and move counter
+- Win modal with close button
+- Responsive layout
+- On small screens, the game defaults to `4 x 4`
+
+---
+
+## ⚙️ How to Run Locally
+
+1. Clone this repository:
+
+   ```bash
+   git clone https://github.com/pablov-git/memory-test
+
+
+2. Navigate into the project directory:
+
+   ```bash
+   cd memory-test
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+
+4. Run the development server:
+
+   ```bash
+   npm run dev
+
+## 🚀 Deployment
+
+The project is live at:
+👉 https://memory-test-bice.vercel.app/
+
+
+## ✒️ Created by
+
+• Pablo Vacas Macarro
