@@ -41,7 +41,6 @@ The game challenges the player to find matching pairs of cards by memorizing the
    ```bash
    git clone https://github.com/pablov-git/memory-test
 
-
 2. Navigate into the project directory:
 
    ```bash
